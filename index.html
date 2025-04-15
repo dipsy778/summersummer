@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StockX Style Receipt</title>
+    <link rel="manifest" href="manifest.json">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+      }
+    </script>
+  <style>
+    @font-face {
+      font-family: 'Hanken';
+      src: url('./hanken.woff2') format('woff2');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Nimbus';
+      src: url('./nimbus.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'Nimbus', sans-serif;
+      background: #f9f9f9;
+      color: black;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-bar {
+      background: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ccc;
+      font-family: 'Nimbus', sans-serif;
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .search-bar {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      font-family: 'Nimbus', sans-serif;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .container {
+      max-width: 100%; width: 100%;
+      background: white;
+      margin: 40px auto;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      width: 130px;
+      margin-bottom: 20px;
+      margin-left: 5px;
+    }
+
+    .sneaker-img {
+      display: block;
+      margin: 0 auto 20px;
+      width: 100%; max-width: 300px;
+      cursor: pointer;
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin: 5px 0;
+      font-family: 'Nimbus', sans-serif;
+      font-weight: normal;
+    }
+
+    p {
+      text-align: center;
+      margin: 5px 0;
+      font-family: 'Nimbus', sans-serif;
+    }
+
+    .order-box {
+      background: #f3f3f3;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .order-box p:first-child {
+      font-family: 'Hanken', sans-serif;
+    }
+
+    .order-box p:nth-child(2) {
+      color: #666;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-family: 'Nimbus', sans-serif;
+      font-weight: normal;
+    }
+
+    td strong {
+      font-family: 'Hanken', sans-serif;
+    }
+
+    td:last-child {
+      text-align: right;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .track-button {
+      display: block;
+      width: 100px;
+      margin: 20px auto 0;
+      padding: 10px;
+      background: white;
+      border: 1px solid black;
+      cursor: pointer;
+      font-family: 'Nimbus', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="nav-links">
+      <a href="#">Browse</a>
+      <a href="#">News</a>
+      <a href="#">About</a>
+      <a href="#">Help</a>
+      <a href="#">My Account</a>
+    </div>
+    <input type="text" class="search-bar" placeholder="Search..."/>
+  </div>
+
+  <div class="container">
+    <img src="mynewlogo.png" alt="StockX Logo" class="logo">
+    <img src="https://images.laced.com/products/47491570-8c93-472d-9e54-c321d339d86f.jpg?auto=format&fit=max&w=640&q=75" alt="Sneaker Image" class="sneaker-img" onclick="editImage()">
+    <h3 contenteditable="true" style="font-family: 'Hanken', sans-serif;">Jordan 1 Retro High</h3>
+    <h2 contenteditable="true" style="font-family: 'Hanken', sans-serif;">Dior</h2>
+    <p contenteditable="true" style="font-family: 'Hanken', sans-serif;">Condition: New | 100% Authentic</p>
+
+    <div class="order-box">
+      <p>Order Delivered!</p>
+      <p>Enjoy! Don't forget to use #GotItOnStockX when sharing unboxing pics</p>
+    </div>
+
+    <table>
+      <tr>
+        <td contenteditable="true">Your Purchase Price</td>
+        <td contenteditable="true">£11,040.00</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">Processing Fee</td>
+        <td contenteditable="true">£59.95</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">Shipping</td>
+        <td contenteditable="true">£13.95</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong contenteditable="true">£11,113.90</strong></td>
+      </tr>
+    </table>
+
+    <div class="footer">
+      <p contenteditable="true">PayPal: exemple@repreceipt.net</p>
+      <p contenteditable="true">Ship to Seaview Avenue NW, Seattle, wa, 98103, US</p>
+    </div>
+
+    <button class="track-button">Track</button>
+  </div>
+
+  <script>
+    function editField(element, message) {
+      const input = prompt(message, element.textContent);
+      if (input !== null) {
+        element.textContent = input;
+      }
+    }
+
+    function editImage() {
+      const newImg = prompt('Enter image link:');
+      if (newImg) {
+        document.querySelector('.sneaker-img').src = newImg;
+      }
+    }
+  </script>
+</body>
+</html>

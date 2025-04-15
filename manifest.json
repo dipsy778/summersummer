@@ -1,0 +1,16 @@
+
+{
+  "name": "StockX Receipt",
+  "short_name": "Receipt",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "mynewlogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
